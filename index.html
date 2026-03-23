@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenta Ogura — Design Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #000;
+    --dark: #000;
+    --mid: #000;
+    --light: #000;
+    --rule: rgba(0,0,0,0.15);
+    --condensed: 'Lato', sans-serif;
+    --body: 'Lato', sans-serif;
+  }
+
+  html { font-size: 16px; }
+  body {
+    background: #fff;
+    color: var(--black);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── TOP SECTION: hero + info side by side ── */
+  .top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    padding: 2.5rem 2rem 2rem;
+    gap: 2rem;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 8.5rem;
+  }
+
+  .hero-title {
+    font-family: var(--condensed);
+    font-size: clamp(4rem, 10vw, 9rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    text-transform: none;
+  }
+
+  /* ── RIGHT INFO PANEL ── */
+  .info-right {
+    border-left: 1px solid var(--rule);
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 0.5rem;
+  }
+
+  .info-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .info-row:first-child { border-top: 1px solid var(--rule); }
+
+  .info-label {
+    font-family: var(--condensed);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--black);
+    padding-top: 0.05rem;
+  }
+
+  .info-body {
+    font-family: var(--body);
+    font-size: 0.72rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--mid);
+  }
+
+  .info-body strong {
+    font-weight: 500;
+    color: var(--dark);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .info-body a {
+    color: var(--mid);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .info-body a:hover { color: var(--black); }
+
+  .info-body ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+  }
+
+  .info-body ul li {
+    font-size: 0.7rem;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  .info-body ul li::before {
+    content: '- ';
+    color: var(--light);
+  }
+
+  .info-body .job-block { margin-bottom: 1rem; }
+
+  /* ── PROJECTS ── */
+  .projects { padding: 0 2rem; }
+
+  .project { padding: 4rem 0 5rem; border-top: 1px solid var(--rule); }
+
+  .project-intro {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    align-items: start;
+  }
+
+  .project-num {
+    font-family: var(--condensed);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--light);
+  }
+
+  .project-head { padding-top: 0.4rem; }
+
+  .project-name {
+    font-family: var(--condensed);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-desc {
+    font-family: var(--body);
+    font-size: 0.72rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--mid);
+    max-width: 38rem;
+  }
+
+  /* ── IMAGE SECTIONS ── */
+  .img-section { margin-bottom: 3rem; }
+
+  .section-label {
+    font-family: var(--condensed);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--light);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .img-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+
+  .img-row.center { justify-content: center; }
+
+  .img-box {
+    background: rgba(0,0,0,0.05);
+    flex-shrink: 0;
+  }
+
+  .img-box img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: unset;
+  }
+
+  /* size helpers */
+  .w-half { width: calc(50% - 0.25rem);  }
+  .w-third { width: calc(33.33% - 0.35rem);  }
+  .w-tall { width: calc(33.33% - 0.35rem);  }
+  .w-wide { width: calc(66.66% - 0.25rem);  }
+  .w-full { width: 100%;  }
+  .w-portrait { width: calc(50% - 0.25rem);  }
+  .w-sq { width: calc(25% - 0.4rem);  }
+  .w-auto { flex: 1; min-width: 120px;  }
+
+  .img-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--condensed);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    min-height: 120px;
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  /* ── CONTACT / FOOTER ── */
+  .contact {
+    border-top: 1px solid var(--rule);
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contact-name {
+    font-family: var(--condensed);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--black);
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+  }
+
+  .contact-links a {
+    font-family: var(--body);
+    font-size: 0.72rem;
+    color: var(--mid);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .contact-links a:hover { color: var(--black); }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem 3rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    width: 120px;
+    height: auto;
+    opacity: 0.85;
+  }
+
+  .footer-credit {
+    font-family: var(--body);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.35);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 700px) {
+    .top { grid-template-columns: 1fr; min-height: auto; padding: 1.5rem; }
+    .info-right { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 1rem; }
+    .info-row { grid-template-columns: 90px 1fr; }
+    .projects { padding: 0 1.5rem; }
+    .project-intro { grid-template-columns: 55px 1fr; }
+    .w-half, .w-wide, .w-portrait { width: 100%; }
+    .w-third, .w-tall { width: calc(50% - 0.25rem); }
+    .w-sq { width: calc(50% - 0.25rem); }
+    .contact { flex-direction: column; gap: 1.5rem; align-items: flex-start; padding: 2rem 1.5rem; }
+    .contact-links { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── TOP: HERO + INFO ── -->
+<div class="top">
+  <div class="hero-left">
+    <h1 class="hero-title">Kenta Ogura<br>Design Portfolio</h1>
+  </div>
+
+  <aside class="info-right">
+    <div class="info-row">
+      <p class="info-label">Profile</p>
+      <div class="info-body">
+        Multidisciplinary designer based in Tokyo with a background in fashion and product design. My work explores objects and accessories through CAD modelling and rapid prototyping using tools such as Fusion 360 and 3D printing. I am interested in experimenting with form, materials, and wearable objects.
+        <br><br>
+        <a href="https://www.linkedin.com/in/kenta-ogura-93a1b922b/" target="_blank">LinkedIn</a>,
+        <a href="https://www.instagram.com/_kentapenta_/" target="_blank">Instagram</a> ↗
+      </div>
+    </div>
+
+    <div class="info-row">
+      <p class="info-label">Education</p>
+      <div class="info-body">
+        <strong>Bachelor of Design in Fashion<br>Toronto Metropolitan University (4 years)</strong>
+        Graduate Collection:<br>
+        Designed and produced 3D-printed footwear and eyewear.
+      </div>
+    </div>
+
+    <div class="info-row">
+      <p class="info-label">Employment</p>
+      <div class="info-body">
+        <div class="job-block">
+          <strong>CFCL | Assistant Designer<br>Tokyo, Japan (2025 – Present)</strong>
+          <ul>
+            <li>Managed studio samples and maintained the product archive</li>
+            <li>Supported fittings, photoshoots, and daily design team operations</li>
+            <li>Supported accessory development through CAD modelling and prototyping using Fusion 360</li>
+            <li>Contributed to prototyping and product development processes</li>
+          </ul>
+        </div>
+        <div class="job-block">
+          <strong>House of Viviano | Studio Assistant<br>Tokyo, Japan (2024)</strong>
+          <ul>
+            <li>Assisted with studio and showroom operations</li>
+            <li>Managed inventory and sample organization</li>
+            <li>Supported client interactions and showroom presentations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <p class="info-label">Skills</p>
+      <div class="info-body">
+        <strong>Product / CAD Design</strong>
+        <ul>
+          <li>Fusion 360</li>
+          <li>CAD modelling for accessories and product design</li>
+          <li>Rapid prototyping</li>
+          <li>3D printing (FDM / SLA)</li>
+        </ul>
+        <br>
+        <strong>Software</strong>
+        <ul>
+          <li>Adobe Illustrator</li>
+          <li>Adobe Photoshop</li>
+          <li>CLO 3D</li>
+        </ul>
+        <br>
+        <strong>Fashion Development</strong>
+        <ul>
+          <li>Tech pack creation</li>
+          <li>Sample development</li>
+          <li>Material and trim sourcing</li>
+          <li>Supporting fittings and product development</li>
+        </ul>
+        <br>
+        <strong>Studio / Production</strong>
+        <ul>
+          <li>Sample archive management</li>
+          <li>Product prototyping</li>
+          <li>Design research</li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- ── PROJECTS ── -->
+<div class="projects">
+
+  <!-- ════ PROJECT 1: JUSTICE ════ -->
+  <div class="project">
+    <div class="project-intro">
+      <p class="project-num">1</p>
+      <div class="project-head">
+        <p class="project-name">Justice</p>
+        <p class="project-desc">This project examines justice not as a fixed moral value but as a system shaped by power and perspective. The title references the homophone "just us," questioning structures that claim fairness while protecting only a few. Influenced by MF DOOM's Strange Ways, the Strangeways Prison Riot, and The Shawshank Redemption, metal becomes a central symbol — neutral in itself but transformed through human intervention.</p>
+      </div>
+    </div>
+
+    <div class="img-section">
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img src="images/justice_campaign_hero_photo.jpg" alt="Justice campaign" style="width:100%; height:auto; object-fit:unset;"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Moodboard</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/justice_reference.jpg" alt="Justice moodboard"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Lighter Ideas</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/lighter_sketches_development_drawings.jpg" alt="Lighter sketches"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">CAD Render</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/justice_lighter_cad_render.png" alt="Lighter CAD render"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Process</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/justice_lighter_process.jpg" alt="Lighter process"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Final</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/justice_lighter_final.jpg" alt="Lighter final"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Glasses Ideas</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/justice_glasses_sketches.jpg" alt="Glasses sketches"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">CAD Render</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/justice_glasses_cad_render.jpg" alt="Glasses CAD render"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Process</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/justice_glasses_process.jpg" alt="Glasses process"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Final</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/justice_glasses_final.jpg" alt="Glasses final"></div></div>
+    </div>
+  </div>
+
+
+  <!-- ════ PROJECT 2: MUTATION ════ -->
+  <div class="project">
+    <div class="project-intro">
+      <p class="project-num">2</p>
+      <div class="project-head">
+        <p class="project-name">Mutation</p>
+        <p class="project-desc">Inspired by AKIRA, this collection explores the uncertainty of transitioning into adulthood. The designs reflect emotional and physical transformation through exaggerated volume and evolving forms. Mutation becomes a metaphor for growth, adaptation, and identity in chaotic environments.</p>
+      </div>
+    </div>
+
+    <div class="img-section">
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_campaign_hero_image.jpg" alt="Mutation campaign"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Moodboard</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_reference.jpg" alt="Mutation moodboard"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Glasses Ideas</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_glasses_sketches.jpg" alt="Mutation glasses sketches"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">CAD Render</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_glasses_cad_render.jpg" alt="Mutation glasses CAD"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Process</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_glasses_process.jpg" alt="Mutation glasses process"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Final</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_glasses_final.jpg" alt="Mutation glasses final"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Shoes Ideas</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_shoes_sketches.jpg" alt="Shoes sketches"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">CAD Render</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_shoes_cad_render.jpg" alt="Shoes CAD render"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Process</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_shoes_process.jpg" alt="Shoes process"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Final</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_shoes_final.jpg" alt="Shoes final"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Bag Ideas</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_bag_sketches.jpg" alt="Bag sketches"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">CAD Render</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_bag_cad_render.jpg" alt="Bag CAD render"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Process</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_bag_process.jpg" alt="Bag process"></div></div>
+    </div>
+
+    <div class="img-section">
+      <p class="section-label">Final</p>
+      <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_bag_final.jpg" alt="Bag final"></div></div>
+    </div>
+
+  </div>
+
+<!-- ── CONTACT ── -->
+<div class="contact">
+  <p class="contact-name">Kenta Ogura</p>
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/kenta-ogura-93a1b922b/" target="_blank">LinkedIn</a>
+    <a href="https://www.instagram.com/_kentapenta_/" target="_blank">@_kentapenta_</a>
+  </div>
+</div>
+
+<div class="site-footer">
+  <img src="images/world_burning.png" alt="Kenta Ogura" class="footer-logo">
+</div>
+
+</body>
+</html>
