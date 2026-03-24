@@ -27,7 +27,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── TOP SECTION: hero + info side by side ── */
   .top {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -53,7 +52,6 @@
     text-transform: none;
   }
 
-  /* ── RIGHT INFO PANEL ── */
   .info-right {
     border-left: 1px solid var(--rule);
     padding-left: 2rem;
@@ -124,7 +122,6 @@
 
   .info-body .job-block { margin-bottom: 1rem; }
 
-  /* ── PROJECTS ── */
   .projects { padding: 0 2rem; }
 
   .project { padding: 4rem 0 5rem; border-top: 1px solid var(--rule); }
@@ -166,7 +163,6 @@
     max-width: 38rem;
   }
 
-  /* ── IMAGE SECTIONS ── */
   .img-section { margin-bottom: 3rem; }
 
   .section-label {
@@ -177,7 +173,18 @@
     text-transform: uppercase;
     color: var(--light);
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-desc {
+    font-family: var(--body);
+    font-size: 0.72rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--mid);
+    max-width: 42rem;
+    margin: 0 auto 1.5rem;
+    text-align: center;
   }
 
   .img-row {
@@ -201,15 +208,14 @@
     object-fit: unset;
   }
 
-  /* size helpers */
-  .w-half { width: calc(50% - 0.25rem);  }
-  .w-third { width: calc(33.33% - 0.35rem);  }
-  .w-tall { width: calc(33.33% - 0.35rem);  }
-  .w-wide { width: calc(66.66% - 0.25rem);  }
-  .w-full { width: 100%;  }
-  .w-portrait { width: calc(50% - 0.25rem);  }
-  .w-sq { width: calc(25% - 0.4rem);  }
-  .w-auto { flex: 1; min-width: 120px;  }
+  .w-half { width: calc(50% - 0.25rem); }
+  .w-third { width: calc(33.33% - 0.35rem); }
+  .w-tall { width: calc(33.33% - 0.35rem); }
+  .w-wide { width: calc(66.66% - 0.25rem); }
+  .w-full { width: 100%; }
+  .w-portrait { width: calc(50% - 0.25rem); }
+  .w-sq { width: calc(25% - 0.4rem); }
+  .w-auto { flex: 1; min-width: 120px; }
 
   .img-placeholder {
     width: 100%; height: 100%;
@@ -224,7 +230,6 @@
     padding: 0.5rem;
   }
 
-  /* ── CONTACT / FOOTER ── */
   .contact {
     border-top: 1px solid var(--rule);
     padding: 3rem 2rem;
@@ -257,7 +262,6 @@
 
   .contact-links a:hover { color: var(--black); }
 
-  /* ── FOOTER ── */
   .site-footer {
     display: flex;
     flex-direction: column;
@@ -282,7 +286,6 @@
     color: rgba(0,0,0,0.35);
   }
 
-  /* ── MOBILE ── */
   @media (max-width: 700px) {
     .top { grid-template-columns: 1fr; min-height: auto; padding: 1.5rem; }
     .info-right { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 1rem; }
@@ -299,7 +302,6 @@
 </head>
 <body>
 
-<!-- ── TOP: HERO + INFO ── -->
 <div class="top">
   <div class="hero-left">
     <h1 class="hero-title">Kenta Ogura<br>Design Portfolio</h1>
@@ -385,10 +387,8 @@
   </aside>
 </div>
 
-<!-- ── PROJECTS ── -->
 <div class="projects">
 
-  <!-- ════ PROJECT 1: JUSTICE ════ -->
   <div class="project">
     <div class="project-intro">
       <p class="project-num">1</p>
@@ -409,6 +409,7 @@
 
     <div class="img-section">
       <p class="section-label">Lighter Ideas</p>
+      <p class="section-desc">Inspired by MF DOOM and <em>The Shawshank Redemption</em>, the lighter explores metal as a symbol of power and control. The form references MF DOOM’s mask and contraband objects within controlled environments.<br>Multiple iterations revealed reliability issues with complex mechanisms, leading to a simplified and more durable final design.</p>
       <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/lighter_sketches_development_drawings.jpg" alt="Lighter sketches"></div></div>
     </div>
 
@@ -429,6 +430,7 @@
 
     <div class="img-section">
       <p class="section-label">Glasses Ideas</p>
+      <p class="section-desc">To further explore the idea of metal, the glasses were developed using forms commonly associated with metal structures. With no single vulnerable point, the design allowed for increased complexity, reinforcing themes of control and structural rigidity.</p>
       <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/justice_glasses_sketches.jpg" alt="Glasses sketches"></div></div>
     </div>
 
@@ -448,8 +450,6 @@
     </div>
   </div>
 
-
-  <!-- ════ PROJECT 2: MUTATION ════ -->
   <div class="project">
     <div class="project-intro">
       <p class="project-num">2</p>
@@ -470,6 +470,7 @@
 
     <div class="img-section">
       <p class="section-label">Glasses Ideas</p>
+      <p class="section-desc">Inspired by the AKIRA bike, the glasses explore forward-leaning aerodynamic forms. Referencing the bike’s windshield, the design emphasizes a sporty, streamlined structure.</p>
       <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_glasses_sketches.jpg" alt="Mutation glasses sketches"></div></div>
     </div>
 
@@ -490,6 +491,7 @@
 
     <div class="img-section">
       <p class="section-label">Shoes Ideas</p>
+      <p class="section-desc">The shoes explore exaggerated forms that challenge traditional footwear silhouettes. Inspired by the bike’s wheel, circular elements and tire-like treads were introduced to reinforce the concept while providing functional traction.</p>
       <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_shoes_sketches.jpg" alt="Shoes sketches"></div></div>
     </div>
 
@@ -510,6 +512,7 @@
 
     <div class="img-section">
       <p class="section-label">Bag Ideas</p>
+      <p class="section-desc">Inspired by the collision scene in <em>AKIRA</em>, the bag explores forms that capture the moment of impact. The design freezes time at the point of collision, creating two intersecting volumes that provide an expressive shape while offering dual storage spaces.</p>
       <div class="img-row"><div class="img-box" style="width:100%; height:auto;"><img style="width:100%; height:auto; object-fit:unset; display:block;" src="images/mutation_bag_sketches.jpg" alt="Bag sketches"></div></div>
     </div>
 
@@ -529,8 +532,8 @@
     </div>
 
   </div>
+</div>
 
-<!-- ── CONTACT ── -->
 <div class="contact">
   <p class="contact-name">Kenta Ogura</p>
   <div class="contact-links">
