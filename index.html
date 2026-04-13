@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenta Ogura</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f5f0;
+    --red: #cc0000;
+    --mid: #666;
+    --border: #ccc;
+    --font: 'Lato', Helvetica, Arial, sans-serif;
+    --shelf-height: 78vh;
+    --collapsed: 52px;
+    --expanded: 340px;
+  }
+
+  html, body {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* PAGE */
+  .page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* RESUME */
+  .resume {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .resume-left {
+    border-right: 1px solid var(--border);
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .resume-hero {
+    font-size: clamp(3.8rem, 9vw, 8.5rem);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: var(--black);
+  }
+
+  .resume-right {
+    padding: 2.5rem 2.5rem;
+    overflow-y: auto;
+  }
+
+  .resume-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.2rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .resume-row:first-child { border-top: 1px solid var(--border); }
+
+  .resume-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--black);
+    padding-top: 0.05rem;
+  }
+
+  .resume-body {
+    font-size: 0.72rem;
+    line-height: 1.65;
+    color: #333;
+  }
+
+  .resume-body a {
+    color: #333;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .resume-body a:hover { color: var(--black); }
+
+  .resume-body .job-block { margin-bottom: 1.1rem; }
+  .resume-body .job-block:last-child { margin-bottom: 0; }
+  .resume-body .job-title { font-weight: 700; display: block; margin-bottom: 0.1rem; }
+  .resume-body .job-loc { color: var(--mid); display: block; margin-bottom: 0.4rem; }
+
+  .resume-body ul { list-style: none; padding: 0; }
+  .resume-body ul li::before { content: '- '; color: var(--mid); }
+  .resume-body ul li { line-height: 1.65; }
+
+  .resume-body .sg { margin-bottom: 0.9rem; }
+  .resume-body .sg:last-child { margin-bottom: 0; }
+  .resume-body .sg-title { font-weight: 700; display: block; margin-bottom: 0.3rem; }
+
+
+  .sliver-view {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-top: 0.5rem;
+  }
+
+  .meta-link {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 1px;
+    white-space: nowrap;
+  }
+  .meta-link:hover { opacity: 0.5; }
+
+  /* COLLECTION BAR */
+  .collection-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .collection-bar-name {
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+
+  .collection-bar-hint {
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    color: var(--mid);
+  }
+
+  /* SHELF */
+  .shelf-section {
+    padding: 0 1.5rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .shelf {
+    display: flex;
+    height: var(--shelf-height);
+    overflow: hidden;
+    border-bottom: 2px solid #bbb;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  }
+
+  /* SLIVER */
+  .sliver {
+    flex: 1 1 0;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-right: 1px solid rgba(0,0,0,0.13);
+    min-width: 48px;
+  }
+
+  .sliver:first-child { border-left: 1px solid rgba(0,0,0,0.13); }
+  .sliver.active { flex: 0 0 42%; }
+
+  .sliver img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* VERTICAL NAME */
+  .sliver-vname {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%) rotate(-90deg);
+    transform-origin: center center;
+    white-space: nowrap;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 1px 5px rgba(0,0,0,0.7);
+    z-index: 4;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+
+  .sliver.active .sliver-vname { opacity: 0; }
+
+  /* INFO OVERLAY */
+  .sliver-info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+    padding: 3.5rem 1.1rem 1.1rem;
+    opacity: 0;
+    transition: opacity 0.3s 0.18s;
+    pointer-events: none;
+  }
+
+  .sliver.active .sliver-info { opacity: 1; }
+
+  .sliver-info-collection {
+    font-size: 0.52rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.22rem;
+  }
+
+  .sliver-info-name {
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.1;
+  }
+
+  /* META BELOW */
+  .shelf-meta {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 0.1rem;
+    margin-top: 0.65rem;
+  }
+
+  .meta-name {
+    font-size: 0.66rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--black);
+    white-space: nowrap;
+  }
+
+  .meta-desc {
+    font-size: 0.63rem;
+    line-height: 1.65;
+    color: var(--mid);
+    max-width: 500px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .footer-name {
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+    color: var(--mid);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover { color: var(--red); }
+
+  @media (max-width: 700px) {
+    .resume { grid-template-columns: 1fr; }
+    .resume-left { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
+    .resume-hero { font-size: clamp(3rem, 14vw, 5rem); }
+    .resume-right { padding: 1.5rem; }
+    .sliver.active { flex: 0 0 60%; }
+    .meta-desc { font-size: 0.63rem; }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="page">
+
+  <!-- RESUME -->
+  <div class="resume">
+    <div class="resume-left">
+      <div class="resume-hero">Kenta<br>Ogura<br>Design<br>Portfolio</div>
+    </div>
+    <div class="resume-right">
+
+      <div class="resume-row">
+        <span class="resume-label">Profile</span>
+        <div class="resume-body">
+          Multidisciplinary designer based in Tokyo with a background in fashion and product design. My work explores objects and accessories through CAD modelling and rapid prototyping using tools such as Fusion 360 and 3D printing. I am interested in experimenting with form, materials, and wearable objects.
+          <br><br>
+          <a href="https://www.linkedin.com/in/kenta-ogura-93a1b922b/" target="_blank">LinkedIn</a>,
+          <a href="https://www.instagram.com/_kentapenta_/" target="_blank">Instagram</a>
+        </div>
+      </div>
+
+      <div class="resume-row">
+        <span class="resume-label">Education</span>
+        <div class="resume-body">
+          Bachelor of Design in Fashion<br>
+          Toronto Metropolitan University (4 years)<br>
+          Graduate Collection:<br>
+          Designed and produced 3D-printed footwear and eyewear.
+        </div>
+      </div>
+
+      <div class="resume-row">
+        <span class="resume-label">Employment</span>
+        <div class="resume-body">
+          <div class="job-block">
+            <span class="job-title">CFCL | Assistant Designer</span>
+            <span class="job-loc">Tokyo, Japan (2025 – Present)</span>
+            <ul>
+              <li>Managed studio samples and maintained the product archive</li>
+              <li>Supported fittings, photoshoots, and daily design team operations</li>
+              <li>Supported accessory development through CAD modelling and prototyping using Fusion 360</li>
+              <li>Contributed to prototyping and product development processes</li>
+            </ul>
+          </div>
+          <div class="job-block">
+            <span class="job-title">House of Viviano | Studio Assistant</span>
+            <span class="job-loc">Tokyo, Japan (2024)</span>
+            <ul>
+              <li>Assisted with studio and showroom operations</li>
+              <li>Managed inventory and sample organization</li>
+              <li>Supported client interactions and showroom presentations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="resume-row">
+        <span class="resume-label">Skills</span>
+        <div class="resume-body">
+          <div class="sg">
+            <span class="sg-title">Product / CAD Design</span>
+            <ul>
+              <li>Fusion 360</li>
+              <li>CAD modelling for accessories and product design</li>
+              <li>Rapid prototyping</li>
+              <li>3D printing (FDM / SLA)</li>
+            </ul>
+          </div>
+          <div class="sg">
+            <span class="sg-title">Software</span>
+            <ul>
+              <li>Adobe Illustrator</li>
+              <li>Adobe Photoshop</li>
+              <li>CLO 3D</li>
+            </ul>
+          </div>
+          <div class="sg">
+            <span class="sg-title">Languages</span>
+            <ul>
+              <li>English (native)</li>
+              <li>Japanese (fluent spoken, conversational written)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JUSTICE -->
+  <div class="collection-bar">
+    <span class="collection-bar-name">Justice</span>
+    <span class="collection-bar-hint">click to expand</span>
+  </div>
+
+  <div class="shelf-section">
+    <div class="shelf" id="shelf-justice">
+
+      <div class="sliver active"
+           data-href="pages/justice-jacket.html"
+           data-name="Jacket"
+           data-desc="A structured jacket referencing the Strangeways Prison Riot and MF DOOM's Strange Ways. Metal as symbol — neutral in itself, transformed through human intervention."
+           onclick="expand(this,'justice')">
+        <img src="images/Justice_Jacket_Preview.jpg" alt="Justice Jacket">
+        <div class="sliver-vname">Jacket</div>
+        <div class="sliver-info">
+          <p class="sliver-info-collection">Justice</p>
+          <p class="sliver-info-name">Jacket</p>
+          <p class="sliver-view">View Project →</p>
+        </div>
+      </div>
+
+      <div class="sliver"
+           data-href="pages/justice-eyewear.html"
+           data-name="Eyewear"
+           data-desc="Frames referencing MF DOOM's mask — identity obscured, vision framed. Examining justice as a system shaped by power and perspective."
+           onclick="expand(this,'justice')">
+        <img src="images/Justice_Glasses_Preview.jpg" alt="Justice Eyewear">
+        <div class="sliver-vname">Eyewear</div>
+        <div class="sliver-info">
+          <p class="sliver-info-collection">Justice</p>
+          <p class="sliver-info-name">Eyewear</p>
+        </div>
+      </div>
+
+      <div class="sliver"
+           data-href="pages/justice-lighter.html"
+           data-name="Lighter"
+           data-desc="Metal shaped by the hand, transformed by intent. Referencing the homophone 'just us' — questioning structures that claim fairness while protecting only a few."
+           onclick="expand(this,'justice')">
+        <img src="images/Justice_Lighter_Preview.jpg" alt="Justice Lighter">
+        <div class="sliver-vname">Lighter</div>
+        <div class="sliver-info">
+          <p class="sliver-info-collection">Justice</p>
+          <p class="sliver-info-name">Lighter</p>
+          <p class="sliver-view">View Project →</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="shelf-meta">
+      <a class="meta-link" id="link-justice" href="pages/justice-jacket.html"><span id="name-justice">Jacket</span> →</a>
+      <span class="meta-desc" id="desc-justice">A structured jacket referencing the Strangeways Prison Riot and MF DOOM's Strange Ways. Metal as symbol — neutral in itself, transformed through human intervention.</span>
+    </div>
+  </div>
+
+  <!-- MUTATION -->
+  <div class="collection-bar">
+    <span class="collection-bar-name">Mutation</span>
+    <span class="collection-bar-hint">click to expand</span>
+  </div>
+
+  <div class="shelf-section">
+    <div class="shelf" id="shelf-mutation">
+
+      <div class="sliver active"
+           data-href="pages/mutation-collection.html"
+           data-name="Collection"
+           data-desc="Inspired by AKIRA — exploring the uncertainty of transitioning into adulthood through exaggerated volume and evolving forms."
+           onclick="expand(this,'mutation')">
+        <img src="images/Mutation_Collection_Preview.jpg" alt="Mutation Collection">
+        <div class="sliver-vname">Collection</div>
+        <div class="sliver-info">
+          <p class="sliver-info-collection">Mutation</p>
+          <p class="sliver-info-name">Collection</p>
+          <p class="sliver-view">View Project →</p>
+        </div>
+      </div>
+
+      <div class="sliver"
+           data-href="pages/mutation-eyewear.html"
+           data-name="Eyewear"
+           data-desc="Eyewear reflecting emotional and physical transformation. Mutation as metaphor for growth, adaptation, and identity in chaotic environments."
+           onclick="expand(this,'mutation')">
+        <img src="images/Mutation_Glasses_Preview.jpg" alt="Mutation Eyewear">
+        <div class="sliver-vname">Eyewear</div>
+        <div class="sliver-info">
+          <p class="sliver-info-collection">Mutation</p>
+          <p class="sliver-info-name">Eyewear</p>
+        </div>
+      </div>
+
+      <div class="sliver"
+           data-href="pages/mutation-footwear.html"
+           data-name="Footwear"
+           data-desc="Footwear with exaggerated silhouettes drawing from AKIRA's cyberpunk visual language — form following the body in motion and mutation."
+           onclick="expand(this,'mutation')">
+        <img src="images/Mutation_Shoe_Preview.jpg" alt="Mutation Footwear">
+        <div class="sliver-vname">Footwear</div>
+        <div class="sliver-info">
+          <p class="sliver-info-collection">Mutation</p>
+          <p class="sliver-info-name">Footwear</p>
+          <p class="sliver-view">View Project →</p>
+        </div>
+      </div>
+    </div>
+    <div class="shelf-meta">
+      <a class="meta-link" id="link-mutation" href="pages/mutation-collection.html"><span id="name-mutation">Collection</span> →</a>
+      <span class="meta-desc" id="desc-mutation">Inspired by AKIRA — exploring the uncertainty of transitioning into adulthood through exaggerated volume and evolving forms.</span>
+    </div>
+  </div>
+
+  <footer>
+    <span class="footer-name">Kenta Ogura</span>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/kenta-ogura-93a1b922b/" target="_blank">linkedin</a></li>
+      <li><a href="https://www.instagram.com/_kentapenta_/" target="_blank">@_kentapenta_</a></li>
+    </ul>
+  </footer>
+
+</div>
+
+<script>
+  function expand(sliver, collection) {
+    const shelf = document.getElementById('shelf-' + collection);
+    const alreadyActive = sliver.classList.contains('active');
+    if (alreadyActive && sliver.dataset.href) {
+      window.location.href = sliver.dataset.href;
+      return;
+    }
+    shelf.querySelectorAll('.sliver').forEach(s => s.classList.remove('active'));
+    sliver.classList.add('active');
+    const name = sliver.dataset.name;
+    const href = sliver.dataset.href || '#';
+    document.getElementById('name-' + collection).textContent = name;
+    document.getElementById('desc-' + collection).textContent = sliver.dataset.desc;
+    document.getElementById('link-' + collection).href = href;
+  }
+</script>
+</body>
+</html>
