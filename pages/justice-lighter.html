@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lighter — Kenta Ogura</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --black: #000; --red: #b71c1c; --rule: rgba(0,0,0,0.15); --font: 'Lato', sans-serif; }
+  html { font-size: 16px; }
+  body { background: #fff; color: var(--black); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2rem; border-bottom: 1px solid var(--rule); }
+  .back-link { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+  .back-link:hover { opacity: 0.6; }
+  .topbar-collection { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,0.4); }
+  .project-header { padding: 3rem 2rem 2.5rem; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; }
+  .project-title { font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; line-height: 0.9; letter-spacing: -0.02em; }
+  .project-desc { font-size: 0.72rem; line-height: 1.75; color: rgba(0,0,0,0.6); max-width: 38rem; padding-bottom: 0.3rem; }
+  .video-section { border-bottom: 1px solid var(--rule); }
+  .video-section video { width: 100%; display: block; }
+  .content { padding: 0 2rem; }
+  .img-section { margin-bottom: 3rem; padding-top: 3rem; border-top: 1px solid var(--rule); }
+  .img-section:first-child { border-top: none; }
+  .section-label { font-size: 1rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; text-align: center; margin-bottom: 1.5rem; }
+  .iow { position: relative; width: 100%; display: block; margin-bottom: 0.5rem; }
+  .iow img { width: 100%; height: auto; display: block; }
+  .ot { position: absolute; color: var(--red); font-family: var(--font); font-size: clamp(0.42rem, 0.75vw, 0.65rem); line-height: 1.55; font-weight: 400; }
+  .ot strong { display: block; font-weight: 700; margin-bottom: 0.2em; }
+  .ot p { margin-bottom: 0.65em; }
+  .ot p:last-child { margin-bottom: 0; }
+  .img-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .img-box { flex-shrink: 0; }
+  .img-box img { display: block; width: 100%; height: auto; }
+  .item-nav { display: flex; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-top: 4rem; }
+  .item-nav a { flex: 1; padding: 1rem 2rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: var(--black); transition: background 0.15s; }
+  .item-nav a:hover { background: rgba(0,0,0,0.04); }
+  .item-nav a.next { text-align: right; border-left: 1px solid var(--rule); }
+  .item-nav a span { display: block; font-weight: 400; font-size: 0.58rem; color: rgba(0,0,0,0.45); margin-bottom: 0.2rem; }
+  .page-footer { border-top: 1px solid var(--rule); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; margin-top: 4rem; flex-wrap: wrap; gap: 1rem; }
+  .footer-name { font-size: 0.65rem; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+  .footer-links a { font-size: 0.62rem; letter-spacing: 0.08em; color: rgba(0,0,0,0.5); text-decoration: none; text-transform: lowercase; }
+  .footer-links a:hover { color: var(--black); }
+  @media (max-width: 700px) {
+    .project-header { grid-template-columns: 1fr; }
+    .content { padding: 0 1.5rem; }
+    .topbar { padding: 1rem 1.5rem; }
+    .ot { font-size: 1.5vw; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back-link" href="../index.html">← Portfolio</a>
+  <span class="topbar-collection">Justice</span>
+</div>
+<div class="project-header">
+  <h1 class="project-title">Lighter</h1>
+  <p class="project-desc">Metal shaped by the hand, transformed by intent. Referencing the homophone 'just us' — questioning structures that claim fairness while protecting only a few.</p>
+</div>
+<div class="content">
+<div class="img-section">
+<p class="section-label">Design Idea</p>
+<div class="iow"><img src="../images/justice_lighter_why_lighter_blank.jpg" alt="Why lighter">
+<div class="ot" style="top:5%;left:59%;width:38%;"><strong>Why a Lighter?</strong>
+<p>The concept of Justice is often understood as objective and fair, yet in reality it is shaped by perspective and power. Institutions such as law enforcement and government are typically associated with justice, but this project questions whether justice is truly neutral.</p>
+<p>In The Shawshank Redemption, justice is rarely seen. Prison guards abuse their authority, and Andy Dufresne remains imprisoned despite his innocence, while others guilty of crimes move freely within the system. Justice becomes inconsistent — defined not by truth, but by power and perspective.</p>
+<p>The lighter became a metaphor for this idea. Like justice, a lighter is neither inherently good nor bad. Its meaning depends entirely on how it is used. A lighter can start a campfire that provides warmth and safety, or it can ignite destruction.</p>
+<p>Through the lighter, this project explores justice as something unstable — an idea that, like fire, can both protect and destroy.</p>
+<p>In The Shawshank Redemption, cigarettes and lighters represent power. As contraband, they can only be obtained through influence and control, creating an informal hierarchy within the prison.</p>
+</div>
+</div>
+<div class="iow"><img src="../images/justice_lighter_design idea_blank.jpg" alt="Lighter design idea">
+<div class="ot" style="top:18%;left:82%;width:16%;"><p>The goal was to design a vintage-inspired lighter that reflects the conflicted nature of the character. A multipurpose function was considered as a way to expand its role, but the focus remained on a minimal, clean design. Something subtle and practical that an everyday person could carry as part of their daily routine.</p>
+</div>
+</div>
+</div>
+<div class="img-section">
+<p class="section-label">Sketches</p>
+<div class="img-row"><div class="img-box" style="width:100%;"><img src="../images/justice_lighter_sketches.jpg" alt="Lighter sketches"></div></div>
+</div>
+<div class="img-section">
+<p class="section-label">Process</p>
+<div class="iow"><img src="../images/justice_lighter_process_blank.jpg" alt="Lighter process">
+<div class="ot" style="top:71%;left:3%;width:29%;"><strong>First Prototype</strong>
+<p>The first prototype was inspired by a cigarette container. The initial concept aimed to combine both a cigarette holder and a lighter into a single object. The first challenge was developing a hinge mechanism that allowed easy access while maintaining a compact form.</p>
+</div>
+<div class="ot" style="top:71%;left:36%;width:29%;"><strong>Second Prototype</strong>
+<p>The second prototype focused on reducing thickness. The first version was too bulky and difficult to carry in a pocket. This iteration reduced the internal capacity for cigarettes but improved portability and usability, shifting the design toward practical everyday use.</p>
+</div>
+<div class="ot" style="top:71%;left:67%;width:29%;"><strong>Third Prototype</strong>
+<p>The third prototype removed the cigarette holder entirely, simplifying the design into a dedicated lighter case. This iteration prioritized practicality and reduced visual complexity by eliminating surface textures and unnecessary details.</p>
+</div>
+</div>
+<div class="iow"><img src="../images/justice_lighter_process_2_blank.jpg" alt="Lighter process 2">
+<div class="ot" style="top:72%;left:24%;width:26%;"><strong>Fourth Prototype</strong>
+<p>The fourth prototype introduced a ridge along the side of the case. This feature was intended to add functionality, with the idea of incorporating a mirror or an additional use to expand the product beyond a single-purpose object.</p>
+</div>
+<div class="ot" style="top:72%;left:52%;width:26%;"><strong>Final Prototype</strong>
+<p>The final prototype removed excess detailing and softened all corners. Feedback from earlier versions indicated that sharp edges were uncomfortable when held and caused discomfort when carried in pockets. The mirror concept was also removed, as it introduced unnecessary complexity and moved away from the clean, minimal direction of the design.</p>
+</div>
+</div>
+</div>
+<div class="img-section">
+<p class="section-label">CAD Render</p>
+<div class="img-row"><div class="img-box" style="width:100%;"><img src="../images/justice_lighter_cad_render.jpg" alt="Lighter CAD render"></div></div>
+</div>
+<div class="img-section">
+<p class="section-label">Final</p>
+<div class="iow"><img src="../images/justice_lighter_final_design_blank.jpg" alt="Lighter final design">
+<div class="ot" style="top:13%;left:47%;width:37%;"><strong>Final Design</strong>
+<p>The final design resulted in a compact lighter with a curved body, allowing it to sit comfortably in the hand while maintaining a clean and minimal form. The reduced size and softened edges improved both ergonomics and portability, reinforcing the practical nature of the object.</p>
+<p>The metallic finish references MF DOOM, who was known for wearing a metal gladiator-style mask to conceal his identity, most notably on the cover of Madvillainy. The worn, gritty aesthetic of the album artwork aligned with the project's theme of justice — an idea that is often imperfect, conflicted, and shaped by real-world complexity rather than polished ideals.</p>
+</div>
+</div>
+<div class="img-row"><div class="img-box" style="width:100%;"><img src="../images/justice_lighter_final.jpg" alt="Lighter final"></div></div>
+</div>
+
+</div>
+<div class="item-nav">
+  <a href="justice-eyewear.html" class="prev"><span>← Previous</span>Justice Eyewear</a>
+  <a href="mutation-collection.html" class="next"><span>Next →</span>Mutation Collection</a>
+</div>
+<div class="page-footer">
+  <span class="footer-name">Kenta Ogura</span>
+  <ul class="footer-links">
+    <li><a href="https://www.linkedin.com/in/kenta-ogura-93a1b922b/" target="_blank">linkedin</a></li>
+    <li><a href="https://www.instagram.com/_kentapenta_/" target="_blank">@_kentapenta_</a></li>
+  </ul>
+</div>
+</body>
+</html>
