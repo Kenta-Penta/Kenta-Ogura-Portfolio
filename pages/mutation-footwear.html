@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footwear Kenta Ogura</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --black: #000; --red: #b71c1c; --rule: rgba(0,0,0,0.15); --font: 'Lato', sans-serif; }
+  html { font-size: 16px; }
+  body { background: #fff; color: var(--black); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2rem; border-bottom: 1px solid var(--rule); }
+  .back-link { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+  .back-link:hover { opacity: 0.6; }
+  .topbar-collection { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,0.4); }
+  .project-header { padding: 3rem 2rem 2.5rem; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; }
+  .project-title { font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; line-height: 0.9; letter-spacing: -0.02em; }
+  .project-desc { font-size: 0.72rem; line-height: 1.75; color: rgba(0,0,0,0.6); max-width: 38rem; padding-bottom: 0.3rem; }
+  .video-section { border-bottom: 1px solid var(--rule); }
+  .video-section video { width: 100%; display: block; }
+  .content { padding: 0 2rem; }
+  .img-section { margin-bottom: 3rem; padding-top: 3rem; border-top: 1px solid var(--rule); }
+  .img-section:first-child { border-top: none; }
+  .section-label { font-size: 1rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; text-align: center; margin-bottom: 1.5rem; }
+  .iow { position: relative; width: 100%; display: block; margin-bottom: 0.5rem; }
+  .iow img { width: 100%; height: auto; display: block; }
+  .ot { position: absolute; color: var(--red); font-family: var(--font); font-size: clamp(0.42rem, 0.75vw, 0.65rem); line-height: 1.55; font-weight: 400; }
+  .ot strong { display: block; font-weight: 700; margin-bottom: 0.2em; }
+  .ot p { margin-bottom: 0.65em; }
+  .ot p:last-child { margin-bottom: 0; }
+  .img-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .img-box { flex-shrink: 0; }
+  .img-box img { display: block; width: 100%; height: auto; }
+  .item-nav { display: flex; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-top: 4rem; }
+  .item-nav a { flex: 1; padding: 1rem 2rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: var(--black); transition: background 0.15s; }
+  .item-nav a:hover { background: rgba(0,0,0,0.04); }
+  .item-nav a.next { text-align: right; border-left: 1px solid var(--rule); }
+  .item-nav a span { display: block; font-weight: 400; font-size: 0.58rem; color: rgba(0,0,0,0.45); margin-bottom: 0.2rem; }
+  .page-footer { border-top: 1px solid var(--rule); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; margin-top: 4rem; flex-wrap: wrap; gap: 1rem; }
+  .footer-name { font-size: 0.65rem; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+  .footer-links a { font-size: 0.62rem; letter-spacing: 0.08em; color: rgba(0,0,0,0.5); text-decoration: none; text-transform: lowercase; }
+  .footer-links a:hover { color: var(--black); }
+  @media (max-width: 700px) {
+    .project-header { grid-template-columns: 1fr; }
+    .content { padding: 0 1.5rem; }
+    .topbar { padding: 1rem 1.5rem; }
+    .ot { font-size: 1.5vw; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back-link" href="../index.html">← Portfolio</a>
+  <span class="topbar-collection">Mutation</span>
+</div>
+<div class="project-header">
+  <h1 class="project-title">Footwear</h1>
+  <p class="project-desc">The reason I went to fashion school begins with a pair of Jordans bought in middle school. This pair is a gift to that version of myself.</p>
+</div>
+<div class="content">
+<div class="img-section">
+<p class="section-label">Design Idea</p>
+<div class="iow"><img src="../images/mutation_shoe_why_shoes_blank.jpg" alt="Why shoes">
+<div class="ot" style="top:48%;left:57%;width:38%;"><strong>Why Shoes?</strong>
+<p>My introduction to fashion began with sneakers. After buying my first pair of Jordans in middle school I became obsessed, researching their history, learning when they were worn and by whom, understanding what people thought when they first appeared. That obsession is why I went to fashion school. This pair is a gift to that version of myself. A way of saying: look what you can do now. Look where the obsession took you.</p>
+<p>The form references two things from AKIRA simultaneously. The bulging organic volumes are drawn from Tetsuo's mutation in the film's final sequence, mass accumulating beyond the body's ability to contain it, form that has grown beyond its original purpose. But the silhouette also references the bikes. The back of the shoe reads as a wheel. The front curves like a windshield. The sole references tire tread.</p>
+<p>The tread was also a functional necessity. The first prototype had no tread and was dangerously slippery, almost impossible to walk in. The solution that fixed the problem also deepened the concept. The shoe needed grip to function. The tire needed tread to move. The reference and the requirement resolved into the same answer.</p>
+</div>
+<div class="ot" style="top:84%;left:47%;width:24%;"><p>The first pair of sneakers I bought that got me hooked to sneakers and shoes</p>
+</div>
+</div>
+</div>
+<div class="img-section">
+<p class="section-label">Sketches</p>
+<div class="img-row"><div class="img-box" style="width:100%;"><img src="../images/mutation_shoes_sketches.jpg" alt="Shoes sketches"></div></div>
+</div>
+<div class="img-section">
+<p class="section-label">Process</p>
+<div class="iow"><img src="../images/mutation_shoes_process_blank.jpg" alt="Shoes process">
+<div class="ot" style="top:92%;left:10%;width:85%;"><p>The first step was determining the foot last. I sourced one online, but the measurements felt inaccurate, resulting in a very snug fit. Multiple tests and adjustments were conducted to refine the proportions and improve comfort.</p>
+<p>The next challenge involved the sole. The shoe lacked a midsole, making it difficult and uncomfortable to walk in. Several solutions were explored, including adding a small unprinted pocket within the sole to create an air cavity, similar to the concept used in Nike's Air technology.</p>
+<p>Another challenge was developing volume in the upper. To achieve a more organic shape, I experimented with creating clay-like forms using a mixture of water and flour. This allowed me to explore new silhouettes, but the results were ultimately unsuccessful and difficult to translate into the final design.</p>
+</div>
+</div>
+<div class="iow"><img src="../images/mutation_shoes_process2_blank.jpg" alt="Shoes process 2">
+<div class="ot" style="top:92%;left:18%;width:78%;"><p>After establishing the base of the shoe, the next step was to explore different design variations. Multiple concepts were tested, including a two-part construction, a smooth non-textured surface, and a more geometric form.</p>
+<p>Another challenge was determining the optimal print orientation. Removing supports cleanly proved difficult, as they often damaged the surface and required extensive cleanup. Various orientations were tested to minimize support contact and improve print quality, followed by sanding to refine the final surface finish.</p>
+</div>
+</div>
+</div>
+<div class="img-section">
+<p class="section-label">CAD Render</p>
+<div class="img-row"><div class="img-box" style="width:100%;"><img src="../images/mutation_shoes_cad_render.jpg" alt="Shoes CAD render"></div></div>
+</div>
+<div class="img-section">
+<p class="section-label">Final</p>
+<div class="iow"><img src="../images/mutation_shoes_final_design_blank.jpg" alt="Mutation shoes final design">
+<div class="ot" style="top:57%;left:60%;width:37%;"><p>The final design drew inspiration from the motorcycle forms in AKIRA, incorporating a large tire-like shape at the back of the shoe. After wear testing, concerns about traction emerged. To address this, I looked to motorcycle tires and developed a tread pattern for the outsole.</p>
+<p>The print orientation was also refined to keep the upper surface smooth and free from support marks. Cushioning was improved by increasing the printed volume around the sole while lowering the infill, creating a softer and more responsive feel when walking.</p>
+</div>
+</div>
+<div class="img-row"><div class="img-box" style="width:100%;"><img src="../images/mutation_shoes_final.jpg" alt="Shoes final"></div></div>
+</div>
+
+</div>
+<div class="item-nav">
+  <a href="mutation-eyewear.html" class="prev"><span>← Previous</span>Mutation Eyewear</a>
+  <a href="../index.html" class="next"><span>↑ Back to</span>Portfolio</a>
+</div>
+<div class="page-footer">
+  <span class="footer-name">Kenta Ogura</span>
+  <ul class="footer-links">
+    <li><a href="https://www.linkedin.com/in/kenta-ogura-93a1b922b/" target="_blank">linkedin</a></li>
+    <li><a href="https://www.instagram.com/_kentapenta_/" target="_blank">@_kentapenta_</a></li>
+  </ul>
+</div>
+</body>
+</html>

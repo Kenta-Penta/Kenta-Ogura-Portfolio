@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eyewear Kenta Ogura</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --black: #000; --red: #b71c1c; --rule: rgba(0,0,0,0.15); --font: 'Lato', sans-serif; }
+  html { font-size: 16px; }
+  body { background: #fff; color: var(--black); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2rem; border-bottom: 1px solid var(--rule); }
+  .back-link { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+  .back-link:hover { opacity: 0.6; }
+  .topbar-collection { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,0.4); }
+  .project-header { padding: 3rem 2rem 2.5rem; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; }
+  .project-title { font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; line-height: 0.9; letter-spacing: -0.02em; }
+  .project-desc { font-size: 0.72rem; line-height: 1.75; color: rgba(0,0,0,0.6); max-width: 38rem; padding-bottom: 0.3rem; }
+  .video-section { border-bottom: 1px solid var(--rule); }
+  .video-section video { width: 100%; display: block; }
+  .content { padding: 0 2rem; }
+  .img-section { margin-bottom: 3rem; padding-top: 3rem; border-top: 1px solid var(--rule); }
+  .img-section:first-child { border-top: none; }
+  .section-label { font-size: 1rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; text-align: center; margin-bottom: 1.5rem; }
+  .iow { position: relative; width: 100%; display: block; margin-bottom: 0.5rem; }
+  .iow img { width: 100%; height: auto; display: block; }
+  .ot { position: absolute; color: var(--red); font-family: var(--font); font-size: clamp(0.42rem, 0.75vw, 0.65rem); line-height: 1.55; font-weight: 400; }
+  .ot strong { display: block; font-weight: 700; margin-bottom: 0.2em; }
+  .ot p { margin-bottom: 0.65em; }
+  .ot p:last-child { margin-bottom: 0; }
+  .img-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .img-box { flex-shrink: 0; }
+  .img-box img { display: block; width: 100%; height: auto; }
+  .item-nav { display: flex; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-top: 4rem; }
+  .item-nav a { flex: 1; padding: 1rem 2rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: var(--black); transition: background 0.15s; }
+  .item-nav a:hover { background: rgba(0,0,0,0.04); }
+  .item-nav a.next { text-align: right; border-left: 1px solid var(--rule); }
+  .item-nav a span { display: block; font-weight: 400; font-size: 0.58rem; color: rgba(0,0,0,0.45); margin-bottom: 0.2rem; }
+  .page-footer { border-top: 1px solid var(--rule); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; margin-top: 4rem; flex-wrap: wrap; gap: 1rem; }
+  .footer-name { font-size: 0.65rem; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+  .footer-links a { font-size: 0.62rem; letter-spacing: 0.08em; color: rgba(0,0,0,0.5); text-decoration: none; text-transform: lowercase; }
+  .footer-links a:hover { color: var(--black); }
+  @media (max-width: 700px) {
+    .project-header { grid-template-columns: 1fr; }
+    .content { padding: 0 1.5rem; }
+    .topbar { padding: 1rem 1.5rem; }
+    .ot { font-size: 1.5vw; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back-link" href="../index.html">← Portfolio</a>
+  <span class="topbar-collection">Justice</span>
+</div>
+<div class="project-header">
+  <h1 class="project-title">Eyewear</h1>
+  <p class="project-desc">Lady Justice wears a blindfold. This project questions whether that is the right choice.</p>
+</div>
+<div class="content">
+<div class="img-section">
+<p class="section-label">Design Idea</p>
+<div class="iow"><img src="../images/justice_glasses_why_glasses_blank.jpg" alt="Why glasses">
+<div class="ot" style="top:5%;left:59%;width:38%;"><strong>Why Glasses?</strong>
+<p>The Strangeways Prison Riot of 1990 led to significant prison reform in the UK. Years later, conditions returned to what they were before. If justice cannot see, it cannot verify. It cannot watch to make sure what it fought for is being kept.</p>
+<p>These glasses argue that Lady Justice should not be blind. She should see clearly, without being temporarily blinded by the light of positive change that later disappears. The dark tint is intentional. Light here represents the appearance of progress, moments that blind people into believing justice has been served while deeper problems remain hidden. The tint cuts through that brightness.</p>
+<p>The frame shape references sunglasses worn by generals and world leaders, people who make decisions about war and justice from the most secure, windowless rooms on earth. The irony of wearing sunglasses in rooms with no sun is not lost. MF DOOM captured this in Strange Ways: the bosses sit behind desks while others pay the price. The people furthest from the consequences hold the most power.</p>
+</div>
+</div>
+<div class="iow"><img src="../images/justice_glasses_design_idea_blank.jpg" alt="Glasses design idea">
+<div class="ot" style="top:8%;left:48%;width:38%;"><p>The frame design focused on exploring variations in shape, scale, and arm thickness. I experimented with different proportions, ranging from more exaggerated silhouettes to refined, minimal forms. These explorations allowed me to understand how subtle changes in geometry could shift the perception of the glasses.</p>
+<p>The goal was to create a classic-looking pair of glasses with a subtle abstract twist. By balancing familiar forms with unconventional proportions, the design maintains a sense of familiarity while introducing tension that reflects the project's theme.</p>
+<p>Through this process, the final direction aimed to create a design that feels recognizable and wearable, while still carrying conceptual depth through proportion, thickness, and form.</p>
+</div>
+</div>
+</div>
+<div class="img-section">
+<p class="section-label">Sketches</p>
+<div class="img-row"><div class="img-box" style="width:100%;"><img src="../images/justice_glasses_sketches.jpg" alt="Glasses sketches"></div></div>
+</div>
+<div class="img-section">
+<p class="section-label">Process</p>
+<div class="iow"><img src="../images/justice_glasses_process_blank.jpg" alt="Glasses process">
+<div class="ot" style="top:68%;left:3%;width:30%;"><p>The first step was to create a basic pair of glasses to establish the overall shape, proportions, and foundation of the design. This base allowed for further experimentation while maintaining control, ensuring that explorations remained realistic and the construction feasible.</p>
+</div>
+<div class="ot" style="top:68%;left:36%;width:30%;"><p>The second prototype explored different frame shapes, beginning with a circular design. One of the main challenges was maintaining a realistic and wearable appearance, as the frame width plays a critical role in both structural integrity and overall balance.</p>
+</div>
+<div class="ot" style="top:68%;left:68%;width:30%;"><p>The third prototype explored a square lens design. This iteration felt both realistic and visually compelling, balancing simplicity with an unconventional shape. The minimal form allowed the geometry of the lenses to become the defining feature.</p>
+</div>
+</div>
+<div class="iow"><img src="../images/justice_glasses_process_2_blank.jpg" alt="Glasses process 2">
+<div class="ot" style="top:68%;left:3%;width:46%;"><p>The fourth prototype combined a standard frame shape with the chain arm design. After creating this iteration, it became clear that this direction had the strongest balance. However, this prototype also revealed several functional issues, particularly in the arms components snapping, hinges breaking, and chain links losing rigidity.</p>
+</div>
+<div class="ot" style="top:68%;left:53%;width:44%;"><p>To solve this problem three things were changed: the arm design, nozzle size (from 0.4 to 0.2mm making the print more detailed), and print orientation (changed from flat to 45 degrees to get rid of the build plate texture from the print).</p>
+</div>
+</div>
+</div>
+<div class="img-section">
+<p class="section-label">CAD Render</p>
+<div class="img-row"><div class="img-box" style="width:100%;"><img src="../images/justice_glasses_cad.jpg" alt="Glasses CAD render"></div></div>
+</div>
+<div class="img-section">
+<p class="section-label">Final</p>
+<div class="iow"><img src="../images/justice_glasses_final design_blank.jpg" alt="Glasses final design">
+<div class="ot" style="top:13%;left:40%;width:38%;"><strong>Design Reasoning</strong>
+<p>The glasses are constructed from two primary components: the frame and the arms. The frame was designed to remain minimal and familiar. Early explorations considered various shapes and sizes, but the final direction moved toward a simple, clean form. This decision was made to create a design that could exist across different social positions.</p>
+<p>The arms became the primary area for design exploration. I arrived at a chain structure for three reasons simultaneously. First, physical restraint, the direct material language of confinement and prison. Second, societal connection, each link dependent on the next, a reminder that one act of injustice sets precedent that echoes through every case that follows. Third, metal itself, neutral until shaped by human intent, the same argument that runs through every object in this collection.</p>
+<p>Through this contrast, a minimal frame paired with chain arms, the glasses balance neutrality and control, reflecting the tension between justice and injustice.</p>
+</div>
+</div>
+<div class="img-row"><div class="img-box" style="width:100%;"><img src="../images/justice_glasses_final.jpg" alt="Glasses final"></div></div>
+</div>
+
+</div>
+<div class="item-nav">
+  <a href="justice-jacket.html" class="prev"><span>← Previous</span>Justice Jacket</a>
+  <a href="justice-lighter.html" class="next"><span>Next →</span>Justice Lighter</a>
+</div>
+<div class="page-footer">
+  <span class="footer-name">Kenta Ogura</span>
+  <ul class="footer-links">
+    <li><a href="https://www.linkedin.com/in/kenta-ogura-93a1b922b/" target="_blank">linkedin</a></li>
+    <li><a href="https://www.instagram.com/_kentapenta_/" target="_blank">@_kentapenta_</a></li>
+  </ul>
+</div>
+</body>
+</html>
